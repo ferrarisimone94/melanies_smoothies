@@ -9,15 +9,19 @@ st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write(
-    """Choose the fruits you want in your cutom Smoothie!"""
+    """Here the list of the fruits available!"""
 )
 
 conn = st.experimental_connection("snowpark")
-my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 
 #convert the snowpark df to a Pandas df so we can use LOC function
 pd_df = my_dataframe.to_pandas()
 st.dataframe(pd_df)
+
+st.write(
+    """Choose the fruit you want in your custom Smoothie!"""
+)
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
