@@ -9,7 +9,7 @@ st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write(
-    """Here the list of the fruits available!"""
+    """Here the list of the ingredients available!"""
 )
 
 conn = st.experimental_connection("snowpark")
@@ -19,12 +19,8 @@ my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('
 pd_df = my_dataframe.to_pandas()
 st.dataframe(pd_df)
 
-st.write(
-    """Choose the fruit you want in your custom Smoothie!"""
-)
-
 ingredients_list = st.multiselect(
-    'Choose up to 5 ingredients:'
+    'Choose up to 5 ingredients to put in your custom Smoothie!'
     ,my_dataframe
     ,max_selections = 6
 )
