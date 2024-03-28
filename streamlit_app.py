@@ -13,7 +13,7 @@ st.write(
 )
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
+st.text(fruityvice_response.json())
 
 #conn = st.experimental_connection()
 conn = st.experimental_connection("snowpark") # Config section defined in [connections.sql] in secrets.toml.
