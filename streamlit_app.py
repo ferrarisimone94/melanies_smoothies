@@ -2,7 +2,6 @@
 import streamlit as st
 import requests
 import pandas as pd
-#from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -10,10 +9,10 @@ st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write(
-    """Welcome! Choose the fruits you want in your cutom Smoothie!"""
+    """Choose the fruits you want in your cutom Smoothie!"""
 )
 
-conn = st.experimental_connection("snowpark") # Config section defined in [connections.sql] in secrets.toml.
+conn = st.experimental_connection("snowpark")
 my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 
 #convert the snowpark df to a Pandas df so we can use LOC function
