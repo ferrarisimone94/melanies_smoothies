@@ -13,7 +13,7 @@ st.write(
 )
 
 conn = st.experimental_connection("snowpark")
-my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 
 #convert the snowpark df to a Pandas df so we can use LOC function
 pd_df = my_dataframe.to_pandas()
