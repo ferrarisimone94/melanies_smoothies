@@ -12,10 +12,6 @@ st.write(
     """Choose the fruits you want in your cutom Smoothie!"""
 )
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-#st.text(fruityvice_response.json())
-fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
-
 #conn = st.experimental_connection()
 conn = st.experimental_connection("snowpark") # Config section defined in [connections.sql] in secrets.toml.
 #session = conn.session()
@@ -38,8 +34,8 @@ if ingredients_list:
     
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
-    
-    #st.write(ingredients_string)
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
