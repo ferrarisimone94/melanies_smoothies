@@ -15,7 +15,7 @@ st.write(
 #conn = st.experimental_connection()
 conn = st.experimental_connection("snowpark") # Config section defined in [connections.sql] in secrets.toml.
 #session = conn.session()
-my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME')).select(col('SEARCH_ON'))
+my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 #my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 st.dataframe(data=my_dataframe, use_container_width=True)
 
