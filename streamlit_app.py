@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 import requests
+import panda as pd
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
@@ -17,7 +18,12 @@ conn = st.experimental_connection("snowpark") # Config section defined in [conne
 #session = conn.session()
 my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 #my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
-st.dataframe(data=my_dataframe, use_container_width=True)
+#st.dataframe(data=my_dataframe, use_container_width=True)
+
+#convert the snowpark df to a Pandas df so we can use LOC function
+pd_df = my_dataframe.to_pandas()
+st.dataframe(pd_df)
+st.stop()
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
