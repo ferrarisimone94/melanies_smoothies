@@ -17,7 +17,7 @@ st.write(
 #                      ('Banana', 'Strawberries', 'Peaches'))
 #st.write('You selected:', option)
 
-cnx = st.connection("snowflakes") 
+cnx = st.experimental_connection('snowflakes') 
 session = cnx.session()
 #session = get_active_session() COMMENTED TO PASS FROM SIS TO SNIS
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
