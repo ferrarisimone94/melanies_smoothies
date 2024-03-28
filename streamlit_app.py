@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+import requests
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
@@ -10,6 +11,9 @@ name_on_order = st.text_input('Name on Smoothie:')
 st.write(
     """Choose the fruits you want in your cutom Smoothie!"""
 )
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
 
 #conn = st.experimental_connection()
 conn = st.experimental_connection("snowpark") # Config section defined in [connections.sql] in secrets.toml.
