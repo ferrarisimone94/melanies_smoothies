@@ -13,7 +13,8 @@ st.write(
 )
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response.json())
+#st.text(fruityvice_response.json())
+fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
 #conn = st.experimental_connection()
 conn = st.experimental_connection("snowpark") # Config section defined in [connections.sql] in secrets.toml.
