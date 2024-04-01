@@ -3,7 +3,7 @@ import streamlit as st
 import requests
 import pandas as pd
 from snowflake.snowpark.functions import col
-import random
+#import random
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
@@ -43,8 +43,8 @@ if ingredients_list:
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
-    if name_on_order == '':
-        name_on_order = "Online Order "+str(random.randint(1,1000))
+    #if name_on_order == '':
+    #    name_on_order = "Online Order "+str(random.randint(1,1000))
     time_to_insert = st.button('Submit Order')
     
     if time_to_insert:
