@@ -40,8 +40,8 @@ if ingredients_list:
         st.sidebar.subheader(search_on + ' Nutrition Information')
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+search_on)
         fv_df = st.sidebar.dataframe(data=fruityvice_response.json(), use_container_width=False)
-        st.sidebar.write("* information provided by Fruityvice.com. Not all our ingredents are reported in this website.")
-        
+                
+    st.sidebar.write("Disclaimer: information provided by Fruityvice.com. Not all our ingredents are reported in this website.")
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
     #if name_on_order == '':
