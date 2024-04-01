@@ -15,7 +15,7 @@ name_on_order = st.text_input('Name on Smoothie:')
 conn = st.experimental_connection("snowpark")
 my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 
-st.sidebar.header("This is a sidebar")
+#st.sidebar.header("Here you will find the ingredient informations as you select them:")
 
 #convert the snowpark df to a Pandas df so we can use LOC function
 pd_df = my_dataframe.to_pandas()
