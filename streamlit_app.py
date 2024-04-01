@@ -56,7 +56,7 @@ created_dataframe = conn.session.sql("select INGREDIENTS_ORDERED as Ingredients,
 
 queried_data = created_dataframe.to_pandas()
 
-st.subheader("Most popular ingredients")
+st.subheader("What our customers love the most")
 st.bar_chart(data=queried_data, x="INGREDIENTS", y="COUNT" )
 
 #if the list is not empty do....
