@@ -4,4 +4,3 @@ snowflake-snowpark-python
 streamlit==1.27.0
 requests
 pandas
-random
