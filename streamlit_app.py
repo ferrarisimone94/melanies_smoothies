@@ -4,6 +4,8 @@ import requests
 import pandas as pd
 from snowflake.snowpark.functions import col
 
+st run streamlit_app.py
+
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
 
@@ -29,7 +31,7 @@ ingredients_list = st.multiselect(
 
 #if the list is not empty do....
 if ingredients_list: 
-    
+ 
     ingredients_string = ''
     
     for fruit_chosen in ingredients_list:
