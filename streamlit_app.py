@@ -52,6 +52,13 @@ ingredients_list = st.multiselect(
     ,max_selections = 6
 )
 
+created_dataframe = conn.session.sql("select INGREDIENTS_ORDERED as Ingredients, count(INGREDIENTS_ORDERED) as count from ing_ordered group by INGREDIENTS_ORDERED order by count desc;")
+
+queried_data = created_dataframe.to_pandas()
+
+st.subheader("Most popular ingredients")
+st.bar_chart(data=queried_data, x="INGREDIENTS", y="COUNT" )
+
 #if the list is not empty do....
 if ingredients_list: 
  
@@ -78,9 +85,3 @@ if ingredients_list:
         name_on_order = ''
         ingredients_list = ''
         
-created_dataframe = conn.session.sql("select INGREDIENTS_ORDERED as Ingredients, count(INGREDIENTS_ORDERED) as count from ing_ordered group by INGREDIENTS_ORDERED order by count desc;")
-
-queried_data = created_dataframe.to_pandas()
-
-st.subheader("Most popular ingredients")
-st.bar_chart(data=queried_data, x="INGREDIENTS", y="COUNT" )
