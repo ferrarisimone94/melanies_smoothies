@@ -23,6 +23,9 @@ ingredients_list = st.multiselect(
     ,max_selections = 6
 )
 
+st.subheader(" ")
+st.subheader(" ")
+st.subheader(" ")
 st.subheader("Cannot decide? Look at what our customer love in the page on the left!")
 
 #if the list is not empty do....
