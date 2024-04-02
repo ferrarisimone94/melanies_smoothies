@@ -6,7 +6,7 @@ from snowflake.snowpark.functions import col
 #import random
 
 # Write directly to the app
-st.title(":cup_with_straw: What people love? :heart:")
+st.title(":heart: What people love?")
 
 conn = st.experimental_connection("snowpark")
 
