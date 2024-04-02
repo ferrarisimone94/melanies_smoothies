@@ -43,7 +43,7 @@ my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('
 #    st.write('Order data not uploaded')
 
 #convert the snowpark df to a Pandas df so we can use LOC function
-#pd_df = my_dataframe.to_pandas()
+pd_df = my_dataframe.to_pandas()
 #st.dataframe(pd_df)
 
 ingredients_list = st.multiselect(
@@ -74,8 +74,7 @@ if ingredients_list:
         fv_df = st.sidebar.dataframe(data=fruityvice_response.json(), use_container_width=False)
                 
     st.sidebar.write("Disclaimer: information provided by Fruityvice.com. Not all our ingredents are reported in this website.")
-    my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
-            values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
+    my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order) values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
     #if name_on_order == '':
     #    name_on_order = "Online Order "+str(random.randint(1,1000))
     time_to_insert = st.button('Submit Order')
