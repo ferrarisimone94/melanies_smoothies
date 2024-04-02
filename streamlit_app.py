@@ -34,7 +34,7 @@ my_dataframe = conn.session.table("smoothies.public.fruit_options").select(col('
 #    total_ingredient = total_ingredient[:-1]
 
 #add_ingredients = """ insert into smoothies.public.ing_ordered(ingredients_ordered)
-            values """ + total_ingredient + """;"""
+#            values """ + total_ingredient + """;"""
 
 #try: 
 #    conn.session.sql("truncate table smoothies.public.ing_ordered;").collect()
