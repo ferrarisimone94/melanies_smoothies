@@ -43,7 +43,6 @@ if ingredients_list:
                 
     st.sidebar.write("Disclaimer: information provided by Fruityvice.com. Not all our ingredents are reported in this website.")
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order) values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
-    st.write(my_insert_stmt)
     #if name_on_order == '':
     #    name_on_order = "Online Order "+str(random.randint(1,1000))
     time_to_insert = st.button('Submit Order')
