@@ -8,7 +8,10 @@ from snowflake.snowpark.functions import col
 # Write directly to the app
 st.title(":heart: What people love?")
 
-conn = st.experimental_connection("snowpark")
+try: 
+    conn = st.experimental_connection("snowpark")
+except:
+    st.write('Snowpark connection not established.')
 
 total_ingredient = ""
 number = 0
